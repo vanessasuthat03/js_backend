@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import styled from "styled-components"
+import "./App.css"
+
+const HeaderStyle = styled.h1`
+  color: #64958f;
+`
 
 function App() {
+  function login() {
+    console.log("inloggat")
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderStyle>Event App </HeaderStyle>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input name="email" placeholder="user@hotmail.com" />
+        <div></div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input name="password" type="password" />
+        </div>
+        <button onClick={login}>Logga in</button>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
