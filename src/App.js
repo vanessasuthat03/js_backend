@@ -3,7 +3,7 @@ import styled from "styled-components"
 import "./App.css"
 
 const ROOT_URL = "http://yoshi.willandskill.eu:8999/api/v1/"
-const LOGIN_URL = `${ROOT_URL} auth/api-token-auth/`
+const LOGIN_URL = `${ROOT_URL}auth/api-token-auth/`
 // const EVENT_LIST_URL =
 
 // STYLE
@@ -17,8 +17,18 @@ function App() {
 
   function login() {
     console.log(email, password)
+    const payload = {
+      email: email,
+      password: password
+    }
 
-    fetch(LOGIN_URL)
+    fetch(LOGIN_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
   }
   return (
     <div className="App">
