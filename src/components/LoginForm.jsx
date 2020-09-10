@@ -1,15 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { useHistory } from "react-router-dom"
+import { UserContext } from "../contexts/UserContext"
 
 const ROOT_URL = "http://yoshi.willandskill.eu:8999/api/v1/"
 const LOGIN_URL = `${ROOT_URL}auth/api-token-auth/`
 // const EVENT_LIST_URL =
 
-// STYLE
-
 export default function LoginForm() {
+  const history = useHistory()
+
   const [email, setEmail] = useState("test.user@willandskill.se")
   const [password, setPassword] = useState("js-lesson-10")
-  const [token, setToken] = useState(null)
+  const { token, setToken } = useContext(UserContext)
 
   function login() {
     console.log(email, password)
@@ -29,6 +31,7 @@ export default function LoginForm() {
       .then(data => {
         console.log("data", data.token) // får fram token
         setToken(data.token)
+        history.push("/event-list")
       })
   }
 
@@ -48,6 +51,7 @@ export default function LoginForm() {
         <input
           name="password"
           type="password"
+          value={password}
           onChange={event => setPassword(event.currentTarget.value)}
         />
       </div>
