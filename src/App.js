@@ -2,13 +2,18 @@ import React from "react"
 import styled from "styled-components"
 import "./App.css"
 
+const ROOT_URL = "http://yoshi.willandskill.eu:8999/api/v1/"
+const LOGIN_URL = `${ROOT_URL} auth/api-token-auth/`
+// const EVENT_LIST_URL =
+
+// STYLE
 const HeaderStyle = styled.h1`
   color: #64958f;
 `
 
 function App() {
   function login() {
-    console.log("inloggat")
+    fetch(LOGIN_URL)
   }
   return (
     <div className="App">
