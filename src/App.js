@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import "./App.css"
 
@@ -12,12 +12,10 @@ const HeaderStyle = styled.h1`
 `
 
 function App() {
-  const emailInput = useRef(null)
-  const passwordInput = useRef(null)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   function login() {
-    const email = emailInput.current.value
-    const password = passwordInput.current.value
     console.log(email, password)
 
     fetch(LOGIN_URL)
@@ -27,11 +25,21 @@ function App() {
       <HeaderStyle>Event App </HeaderStyle>
       <div>
         <label htmlFor="email">Email</label>
-        <input ref={emailInput} name="email" placeholder="user@hotmail.com" />
+        <input
+          name="email"
+          type="email"
+          value={email}
+          onChange={event => setEmail(event.currentTarget.value)}
+          placeholder="user@hotmail.com"
+        />
         <div></div>
         <div>
           <label htmlFor="password">Password</label>
-          <input ref={passwordInput} name="password" type="password" />
+          <input
+            name="password"
+            type="password"
+            onChange={event => setPassword(event.currentTarget.value)}
+          />
         </div>
         <button onClick={login}>Logga in</button>
       </div>
