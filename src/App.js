@@ -12,6 +12,8 @@ const HeaderStyle = styled.h1`
 `
 
 function App() {
+  const emailInput = useRef(null)
+  const passwordInput = useRef(null)
   function login() {
     fetch(LOGIN_URL)
   }
@@ -20,11 +22,11 @@ function App() {
       <HeaderStyle>Event App </HeaderStyle>
       <div>
         <label htmlFor="email">Email</label>
-        <input name="email" placeholder="user@hotmail.com" />
+        <input ref={emailInput} name="email" placeholder="user@hotmail.com" />
         <div></div>
         <div>
           <label htmlFor="password">Password</label>
-          <input name="password" type="password" />
+          <input ref={passwordInput} name="password" type="password" />
         </div>
         <button onClick={login}>Logga in</button>
       </div>
