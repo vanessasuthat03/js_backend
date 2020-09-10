@@ -12,8 +12,9 @@ const HeaderStyle = styled.h1`
 `
 
 function App() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("test.user@willandskill.se")
+  const [password, setPassword] = useState("js-lesson-10")
+  const [token, setToken] = useState(null)
 
   function login() {
     console.log(email, password)
@@ -29,6 +30,11 @@ function App() {
       },
       body: JSON.stringify(payload)
     })
+      .then(res => res.json()) // det man får tillbaka från fetch
+      .then(data => {
+        console.log("data", data.token) // får fram token
+        setToken(data.token)
+      })
   }
   return (
     <div className="App">
