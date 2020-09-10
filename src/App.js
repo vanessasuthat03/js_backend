@@ -1,17 +1,12 @@
 import React, { useRef, useState } from "react"
 import "./App.css"
-import styled from "styled-components"
-import LoginForm from "./components/LoginForm"
 
-const HeaderStyle = styled.h1`
-  color: #64958f;
-`
+import LoginPage from "./pages/LoginPage"
 
 function App() {
   return (
     <div className="App">
-      <HeaderStyle>Event App </HeaderStyle>
-      <LoginForm />
+      <LoginPage />
     </div>
   )
 }
